@@ -10,6 +10,18 @@ class MockFlutterAndroidLogPrinterPlatform
 
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
+
+  @override
+  Future<void> logD(String tag, String info) {
+    // TODO: implement logD
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> logE(String tag, String info) {
+    // TODO: implement logE
+    throw UnimplementedError();
+  }
 }
 
 void main() {

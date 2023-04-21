@@ -1,5 +1,7 @@
 package com.example.flutter_android_log_printer;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
@@ -26,6 +28,18 @@ public class FlutterAndroidLogPrinterPlugin implements FlutterPlugin, MethodCall
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
     if (call.method.equals("getPlatformVersion")) {
       result.success("Android " + android.os.Build.VERSION.RELEASE);
+    } else if (call.method.equals("logD")) {
+      String tag = (String) call.argument("tag");
+      int maxLogSize = (int) call.argument("maxLogSize");
+      String info = (String) call.argument("info");
+      assert info != null;
+      LogUtil.printLog(tag, info, Log.DEBUG, maxLogSize);
+    } else if (call.method.equals("logE")) {
+      String tag = (String) call.argument("tag");
+      Integer maxLogSize = (Integer) call.argument("maxLogSize");
+      String info = (String) call.argument("info");
+      assert info != null;
+      LogUtil.printLog(tag, info, Log.ERROR, maxLogSize);
     } else {
       result.notImplemented();
     }

@@ -26,4 +26,12 @@ abstract class FlutterAndroidLogPrinterPlatform extends PlatformInterface {
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
+  Future<void> logD(String tag, String info, int maxLogSize) {
+    throw UnimplementedError('logD() has not been implemented.');
+  }
+
+  Future<void> logE(String tag, String info, int maxLogSize) {
+    throw UnimplementedError('logE() has not been implemented.');
+  }
 }

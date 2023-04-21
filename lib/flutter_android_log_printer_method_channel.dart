@@ -14,4 +14,14 @@ class MethodChannelFlutterAndroidLogPrinter extends FlutterAndroidLogPrinterPlat
     final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
+
+  @override
+  Future<void> logD(String tag, String info, int maxLogSize) async {
+    await methodChannel.invokeMethod<String>('logD', {"tag": tag, "maxLogSize": maxLogSize, "info": info});
+  }
+
+  @override
+  Future<void> logE(String tag, String info, int maxLogSize) async {
+    await methodChannel.invokeMethod<String>('logE', {"tag": tag, "maxLogSize": maxLogSize, "info": info});
+  }
 }
